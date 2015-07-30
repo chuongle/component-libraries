@@ -1,0 +1,12 @@
+band:
+  css:
+    theme:
+      libraries/css/band.css: {}
+band-with-right-image:
+  css:
+    theme:
+      libraries/css/band-with-right-image.css: {}
+band-with-left-image:
+  css:
+    theme:
+      libraries/css/band-with-left-image.css: {}

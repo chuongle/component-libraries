@@ -1,0 +1,9 @@
+.clearfix:before, .clearfix:after, .clearfix::before, .clearfix::after {
+	display: table;
+	content: "";
+	clear: both;
+}
+.container {
+	max-width: 1024px;
+	margin: 0 auto;
+}

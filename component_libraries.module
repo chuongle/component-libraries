@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains component_libraries.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function component_libraries_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the component_libraries module.
+    case 'help.page.component_libraries':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('My Awesome Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function component_libraries_theme() {
+  $theme['band_component'] = [
+    'variables' => ['title' => NULL, 'body' =>  NULL, 'background_image' =>  NULL, 'classes' => NULL],
+    'template' => 'band_component'
+  ];
+  $theme['band_with_right_image'] = [
+    'variables' => ['title' => NULL, 'body' =>  NULL, 'background_image' =>  NULL, 'image' =>  NULL, 'classes' => NULL],
+    'template' => 'band_with_right_image'
+  ];
+  return $theme;
+}

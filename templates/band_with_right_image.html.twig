@@ -1,0 +1,11 @@
+<div class="{{classes}}" {% if background_image %} style="background: url({{background_image}}) center no-repeat; background-size: cover" {% endif %}>
+	<div class="container clearfix">
+		<div class="left">
+			<h2>{{title}}</h2>
+			{{body | raw}}
+		</div>
+		<div class="right">	
+			<img alt="" src="{{image}}"/>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,9 @@
+
+component_libraries.default_controller_hello:
+  path: '/component_libraries/hello/{name}'
+  defaults:
+    _controller: '\Drupal\component_libraries\Controller\DefaultController::hello'
+    _title: 'component_libraries Title'
+  requirements:
+    _permission: 'access content'
+
