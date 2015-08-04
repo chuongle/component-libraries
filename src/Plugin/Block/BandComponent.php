@@ -15,7 +15,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @Block(
  *  id = "band_component",
- *  admin_label = @Translation("Band Component: title - body - background image"),
+ *  admin_label = @Translation("Band with title, body and background image"),
  * )
  */
 class BandComponent extends BlockBase {
@@ -60,6 +60,15 @@ class BandComponent extends BlockBase {
 		$this->setConfigurationValue('body', $form_state->getValue('body'));
 		$this->setConfigurationValue('background_image', $form_state->getValue('background_image'));
 		$this->setConfigurationValue('classes', $form_state->getValue('classes'));
+
+		$config = $this->getConfiguration();
+		// https://api.drupal.org/api/examples/image_example
+		// The new file's status is set to 0 or temporary and in order to ensure
+		// that the file is not removed after 6 hours we need to change it's status
+		// to 1. Save the ID of the uploaded image for later use.
+    $background_image = file_load($config['background_image'][0]);
+    $background_image->status = FILE_STATUS_PERMANENT;
+    $background_image->save();
 	}
 
   /**

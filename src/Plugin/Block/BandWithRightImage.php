@@ -69,6 +69,18 @@ class BandWithRightImage extends BlockBase {
 		$this->setConfigurationValue('image', $form_state->getValue('image'));
 		$this->setConfigurationValue('background_image', $form_state->getValue('background_image'));
 		$this->setConfigurationValue('classes', $form_state->getValue('classes'));
+		$config = $this->getConfiguration();
+		// https://api.drupal.org/api/examples/image_example
+		// The new file's status is set to 0 or temporary and in order to ensure
+		// that the file is not removed after 6 hours we need to change it's status
+		// to 1. Save the ID of the uploaded image for later use.
+    $background_image = file_load($config['background_image'][0]);
+    $background_image->status = FILE_STATUS_PERMANENT;
+    $background_image->save();
+
+    $image_file = file_load($config['image'][0]);
+    $image_file->status = FILE_STATUS_PERMANENT;
+    $image_file->save();
 	}
 
   /**
@@ -84,13 +96,12 @@ class BandWithRightImage extends BlockBase {
 		  '#background_image'  =>  !empty($config['background_image']) ? file_create_url(file_load($config['background_image'][0])->getFileUri()) : '',
 		  '#classes'  => $config['classes'],
 		  // how to add css/js to custom block
-		  // '#attached' => array(
-    //     'library' =>  array(
-    //       'component_libraries/band-with-right-image',
-    //       'component_libraries/band-with-left-image',
-    //       'component_libraries/band',
-    //     ),
-    //   ),
+		  '#attached' => array(
+        'library' =>  array(
+          'component_libraries/band',
+          'component_libraries/band-with-right-image',
+        ),
+      ),
 		];
   }
 

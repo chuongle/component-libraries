@@ -1,6 +1,24 @@
 .left {
+	width: 75%;
 	float: left;
+	margin-right: -100%;
+	clear: none;
+	padding-left: 15px;
+	padding-right: 15px;
 }
 .right {
+	width: 25%;
 	float: right;
+	margin-left: 0;
+	margin-right: 0;
+	clear: none;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+@media (max-width: 768px) {
+	.left, .right {
+		margin: 0;
+		float: none;
+		width: 100%;
+	}
 }

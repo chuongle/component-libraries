@@ -35,5 +35,9 @@ function component_libraries_theme() {
     'variables' => ['title' => NULL, 'body' =>  NULL, 'background_image' =>  NULL, 'image' =>  NULL, 'classes' => NULL],
     'template' => 'band_with_right_image'
   ];
+  $theme['block_with_custom_template'] = [
+    'variables' => ['title' => NULL, 'body' =>  NULL, 'template' =>  NULL],
+    'template' => 'custom_template'
+  ];
   return $theme;
 }
